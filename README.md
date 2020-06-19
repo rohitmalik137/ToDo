@@ -1,5 +1,4 @@
-#WIP
-# my-ToDo-backend
+# ToDo
 
-REST APIs to perform CRUD operations on a React Js ToDo application.
-Technologies Used:- Node.Js, Express.Js, MongoDB(Mongoose)
+MERN Stack application like microsoft todo
+Technologies Used:- Node.Js, Express.Js, MongoDB(Mongoose), React JS
