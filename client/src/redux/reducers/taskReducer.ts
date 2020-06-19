@@ -3,17 +3,19 @@ import {
   ADD_TASK,
   DELETE_TASK,
   TASKS_LOADING,
-} from "../actions/types";
+} from '../actions/types';
+import { IAction, IItem } from '../types/interfaces';
 
 const INITIAL_STATE = {
   tasks: [],
   loading: false,
 };
 
-export default function (
-  state = INITIAL_STATE,
-  action: { type: any; payload: any }
-) {
+interface IState {
+  tasks: IItem[];
+}
+
+export default function (state: IState = INITIAL_STATE, action: IAction) {
   switch (action.type) {
     case GET_TASKS:
       return {

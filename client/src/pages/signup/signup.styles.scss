@@ -1,23 +1,31 @@
-.sign-in__wrapper{
-    display: flex;
-    justify-content: center;
-    margin-top: 75px;
+.sign-in__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 75px;
 
-    .sign-in{
-        width: 380px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border: 1px solid black;
-        margin: 20px;
-    
-        .title{
-            margin: 10px 0;
-        }
-    
-        .buttons{
-            display: flex;
-            justify-content: center;
-        }
+  .sign-in {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 20px;
+
+    .error {
+      display: block;
+      background-color: rgb(252, 180, 180);
+      border: 1px solid red;
+      //   color: white;
+      padding: 0.5rem;
     }
+
+    .title {
+      margin: 10px 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+    }
+  }
 }

@@ -1,35 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import "./login.styles.scss";
-import logo from "../../assets/logo.png";
-import Image from "../../components/image/image.component";
-import FormInput from "../../components/form-input/form-input.component";
-import CustomButton from "../../components/custom-button/custom-button.component";
+import './login.styles.scss';
+import logo from '../../assets/logo.png';
+import Image from '../../components/image/image.component';
+import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
+import { login } from '../../redux/actions/authActions';
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    email: '',
+    password: '',
+    msg: null,
+  };
 
-    this.state = {
-      email: "",
-      password: "",
-    };
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    if (error !== prevProps.error) {
+      //Check for register error
+      if (error.id === 'LOGIN_FAIL') {
+        this.setState({ msg: error.msg.msg });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
   }
 
-  // handleSubmit = async event => {
-  //     event.preventDefault();
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    const user = {
+      email,
+      password,
+    };
 
-  //     const { email, password } = this.state;
-
-  //     try{
-  //         await auth.signInWithEmailAndPassword(email, password);
-  //         this.setState({email: '', password: ''});
-  //     } catch(error){
-  //         console.error(error);
-  //     }
-
-  // }
+    //Attempt to login
+    this.props.login(user);
+  };
 
   handleChange = (event) => {
     const { value, name } = event.target;
@@ -42,24 +58,19 @@ class Login extends React.Component {
       <div className="sign-in__wrapper">
         <div className="sign-in">
           <div>
-            {" "}
-            <Image logo={logo} isLogo="yes" />{" "}
+            {' '}
+            <Image logo={logo} isLogo="yes" />{' '}
           </div>
-          <form
-            onSubmit={(e) =>
-              this.props.onLogin(e, {
-                email: this.state.email,
-                password: this.state.password,
-              })
-            }
-          >
+          {this.state.msg ? (
+            <div className="error">{this.state.msg}</div>
+          ) : null}
+          <form onSubmit={this.handleSubmit}>
             <FormInput
               name="email"
               type="email"
               label="email"
               handleChange={this.handleChange}
               value={this.state.email}
-              required
             />
             <FormInput
               name="password"
@@ -67,13 +78,12 @@ class Login extends React.Component {
               label="password"
               handleChange={this.handleChange}
               value={this.state.password}
-              required
             />
             <p className="anchor__wrapper">
-              No account?{" "}
+              No account?{' '}
               <Link to="/signup" className="anchor">
                 Create One!
-              </Link>{" "}
+              </Link>{' '}
             </p>
             <div className="buttons">
               <CustomButton type="submit"> LOGIN </CustomButton>
@@ -85,4 +95,9 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error,
+});
+
+export default connect(mapStateToProps, { login })(Login);
