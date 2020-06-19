@@ -1,0 +1,58 @@
+.single-task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgb(221, 214, 214);
+
+    .left{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .complete{
+            border: 1px solid black;
+            color: transparent;
+            font-size: x-small;
+            padding: 2px;
+            width: 20px;
+            height: 20px;
+
+            &:hover{
+                color: black;
+            }
+        }
+
+        .isComplete{
+            color: black;
+        }
+    
+    }
+
+    .right{
+        display: flex;
+        margin: 0 20px;
+
+        .important{
+            color: rgb(4, 0, 255);
+        }
+    }
+
+    .icon{
+        margin: 0 10px;
+        // border: 1px solid black;
+        padding: 5px;
+        border-radius: 50%;
+        font-size: larger;
+
+        &:hover{
+            background-color: rgb(191, 216, 252);
+        }
+    }
+
+    &:hover{
+        background-color: rgb(236, 241, 248);
+        cursor: pointer;
+        // color: white;
+    }
+}
