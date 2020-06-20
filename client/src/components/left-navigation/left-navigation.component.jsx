@@ -1,37 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './left-navigation.styles.scss';
 import LeftNavigationLinks from '../left-navigation-links/left-navigation-links.component';
 
-const LeftNavigation = () => (
-    <div className='main__wrapper'>
-        <div className='left-navigation-links__wrapper'>
-            <Link to='/tasks/myday' style={{ textDecoration: 'none' }}>
-                <LeftNavigationLinks icon='&#9734;' text='My Day'  />
-            </Link>
+class LeftNavigation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
+  }
+
+  render() {
+    return (
+      <div className="main__wrapper">
+        <div className="left-navigation-links__wrapper">
+          <Link to="/tasks/myday" style={{ textDecoration: 'none' }}>
+            <LeftNavigationLinks
+              icon="fa fa-sun-o"
+              text="My Day"
+              isOpen={this.props.isOpen}
+            />
+          </Link>
         </div>
-        <div className='left-navigation-links__wrapper'>
-            <Link to='/tasks/important' style={{ textDecoration: 'none' }}>
-                <LeftNavigationLinks icon='&#9734;' text='Important'  />
-            </Link>
+        <div className="left-navigation-links__wrapper">
+          <Link to="/tasks/important" style={{ textDecoration: 'none' }}>
+            <LeftNavigationLinks
+              icon="fa fa-star"
+              text="Important"
+              isOpen={this.props.isOpen}
+            />
+          </Link>
         </div>
-        <div className='left-navigation-links__wrapper'>
-            <Link to='/tasks/planned' style={{ textDecoration: 'none' }}>
-                <LeftNavigationLinks icon='&#9734;' text='Planned'  />
-            </Link>
+        <div className="left-navigation-links__wrapper">
+          <Link to="/tasks/planned" style={{ textDecoration: 'none' }}>
+            <LeftNavigationLinks
+              icon="fa fa-calendar"
+              text="Planned"
+              isOpen={this.props.isOpen}
+            />
+          </Link>
         </div>
-        <div className='left-navigation-links__wrapper'>
-            <Link to='/tasks/assigned_to_me' style={{ textDecoration: 'none' }}>
-                <LeftNavigationLinks icon='&#9734;' text='Assigned to you'  />
-            </Link>
+        <div className="left-navigation-links__wrapper">
+          <Link to="/tasks/assigned_to_me" style={{ textDecoration: 'none' }}>
+            <LeftNavigationLinks
+              icon="fa fa-user"
+              text="Assigned to you"
+              isOpen={this.props.isOpen}
+            />
+          </Link>
         </div>
-        <div className='left-navigation-links__wrapper'>
-            <Link to='/tasks/inbox' style={{ textDecoration: 'none' }}>
-                <LeftNavigationLinks icon='&#9734;' text='Tasks'  />
-            </Link>
+        <div className="left-navigation-links__wrapper">
+          <Link to="/tasks/inbox" style={{ textDecoration: 'none' }}>
+            <LeftNavigationLinks
+              icon="fa fa-home"
+              text="Tasks"
+              isOpen={this.props.isOpen}
+            />
+          </Link>
         </div>
-    </div>
-)
+      </div>
+    );
+  }
+}
 
 export default LeftNavigation;

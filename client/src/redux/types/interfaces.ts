@@ -71,6 +71,8 @@ export interface IExistingItem {
 export interface IItem {
   _id?: string;
   name: string;
+  important?: boolean;
+  completed?: boolean;
 }
 
 export interface IItemModal {

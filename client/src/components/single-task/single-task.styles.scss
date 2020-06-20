@@ -1,58 +1,77 @@
-.single-task{
+.single-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgb(221, 214, 214);
+
+  .left {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid rgb(221, 214, 214);
 
-    .left{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+    .complete {
+      border: 1px solid black;
+      color: transparent;
+      text-align: center;
+      font-size: x-small;
+      padding: 2px;
+      width: 12px;
+      height: 12px;
+      //   position: absolute;
 
-        .complete{
-            border: 1px solid black;
-            color: transparent;
-            font-size: x-small;
-            padding: 2px;
-            width: 20px;
-            height: 20px;
+      .tick {
+        position: relative;
+        top: -8px;
+      }
 
-            &:hover{
-                color: black;
-            }
-        }
-
-        .isComplete{
-            color: black;
-        }
-    
+      &:hover {
+        color: black;
+      }
     }
 
-    .right{
-        display: flex;
-        margin: 0 20px;
+    .isComplete {
+      color: white;
+      background-color: rgb(0, 102, 255);
+      font-size: larger;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+  }
 
-        .important{
-            color: rgb(4, 0, 255);
-        }
+  .right {
+    display: flex;
+    margin: 0 20px;
+    align-items: center;
+
+    .fa-star {
+      color: white;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
     }
 
-    .icon{
-        margin: 0 10px;
-        // border: 1px solid black;
-        padding: 5px;
-        border-radius: 50%;
-        font-size: larger;
-
-        &:hover{
-            background-color: rgb(191, 216, 252);
-        }
+    .important {
+      color: black;
+      -webkit-text-fill-color: rgb(0, 102, 255);
+      -webkit-text-stroke-width: 0.5px;
     }
+  }
 
-    &:hover{
-        background-color: rgb(236, 241, 248);
-        cursor: pointer;
-        // color: white;
+  .icon {
+    margin: 0 10px;
+    // border: 1px solid black;
+    padding: 5px;
+    border-radius: 50%;
+
+    &:hover {
+      font-size: larger;
     }
+  }
+
+  &:hover {
+    background-color: rgb(236, 241, 248);
+    cursor: pointer;
+    // color: white;
+  }
 }

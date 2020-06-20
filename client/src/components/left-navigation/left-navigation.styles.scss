@@ -1,21 +1,25 @@
-.main__wrapper{
-    background-color: rgb(235, 235, 235);
-    height: 90vh;
-    padding-top: 50px;
+.main__wrapper {
+  background-color: rgb(235, 235, 235);
+  height: 80vh;
+  margin-top: 15px;
 
+  .toggler {
+    padding: 10px;
+    font-size: x-large;
+    text-align: left;
+  }
 
-    .left-navigation-links__wrapper{
-        padding: 5px;
-        cursor: pointer;
-        text-decoration: none;
-        
-        &:hover{
-            background-color: rgb(255, 255, 255);
-        }
+  .left-navigation-links__wrapper {
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none;
 
-        a{
-            color: black;
-        }
-    
+    &:hover {
+      background-color: rgb(255, 255, 255);
     }
+
+    a {
+      color: black;
+    }
+  }
 }

@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import "./task-submit-form.styles.scss";
-import FormInput from "../form-input/form-input.component";
-import CustomButton from "../custom-button/custom-button.component";
-import { addTask } from "../../redux/actions/taskActions.ts";
+import './task-submit-form.styles.scss';
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import { addTask } from '../../redux/actions/taskActions.ts';
 
 class TaskSubmitForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      task: "",
+      task: '',
     };
   }
 
@@ -26,42 +26,8 @@ class TaskSubmitForm extends Component {
 
     this.props.addTask(newTask);
     this.setState({
-      task: "",
+      task: '',
     });
-
-    // fetch('http://localhost:8080/todo/task', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         task: this.state.task
-    //     })
-    // })
-    // .then(res => {
-    //     if (res.status === 422) {
-    //       throw new Error(
-    //         "Validation failed."
-    //       );
-    //     }
-    //     if (res.status !== 200 && res.status !== 201) {
-    //       console.log('Error!');
-    //       throw new Error('Adding a task failed!');
-    //     }
-    //     return res.json();
-    // })
-    // .then(resData => {
-    //     console.log(resData);
-    //     this.setState({
-    //         task: ''
-    //     })
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    //     this.setState({
-    //         task: ''
-    //     })
-    // });
   };
 
   handleChange = (event) => {

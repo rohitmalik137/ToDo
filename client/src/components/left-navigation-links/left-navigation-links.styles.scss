@@ -1,11 +1,16 @@
-.leftnavigationlink{
-    display: flex;
-    // justify-content: start;
-    align-items: center;
-    text-decoration: none;
+.leftnavigationlink {
+  display: flex;
+  // justify-content: start;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.3rem 0;
+  //   border: 1px solid black;
 
-    .icon{
-        margin: 0 10px;
-        font-size: x-large;
-    }
+  .icon {
+    margin: 0 10px;
+    color: transparent;
+    font-size: large;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+  }
 }
