@@ -2,7 +2,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-import config from '../config/default.json';
+const config = require('../config/default.json');
 const User = require('../models/user');
 
 exports.signup = (req, res, next) => {
