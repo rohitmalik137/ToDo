@@ -1,10 +1,10 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import path from 'path';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import config from './config/default.json';
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const config = require('./config/default.json');
 
 const todoRoutes = require('./routes/todo');
 const authRoutes = require('./routes/auth');
