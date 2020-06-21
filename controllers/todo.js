@@ -4,7 +4,9 @@ const path = require('path');
 const Todo = require('../models/todo');
 
 exports.getTasks = (req, res, next) => {
-  Todo.find()
+  const id = req.params.id;
+  console.log(id);
+  Todo.find({ userId: id })
     .sort({ createdAt: -1 })
     .then((tasks) => {
       res.status(200).json({
@@ -21,9 +23,13 @@ exports.getTasks = (req, res, next) => {
 };
 
 exports.createTask = (req, res, next) => {
-  const task = req.body.task;
+  const { task, important, completed } = req.body;
+  const id = req.params.id;
   const addTask = new Todo({
     task: task,
+    completed: completed,
+    important: important,
+    userId: id,
   });
   addTask
     .save()

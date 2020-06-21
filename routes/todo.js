@@ -7,10 +7,10 @@ const isAuth = require('../middleware/is-auth');
 const router = express.Router();
 
 // GET /todo/tasks
-router.get('/tasks', isAuth, todoController.getTasks);
+router.get('/tasks/:id', isAuth, todoController.getTasks);
 
 // POST /todo/task
-router.post('/task', isAuth, todoController.createTask);
+router.post('/task/:id', isAuth, todoController.createTask);
 
 // router.get('/task/:taskId', isAuth, todoController.getTask);
 

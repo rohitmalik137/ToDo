@@ -16,25 +16,23 @@ class HomePage extends Component {
       searchField: '',
       open: false,
       hideNshow: false,
+      windowWidth: 0,
     };
   }
 
-  renderSwitch(args) {
-    switch (args) {
-      case 'inbox':
-        return <TasksWrapper />;
-      case 'myday':
-        return 'myday';
-      case 'important':
-        return 'important';
-      case 'planned':
-        return 'planned';
-      case 'assigned_to_me':
-        return 'assigned_to_me';
-      default:
-        return <TasksWrapper />;
-    }
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener('resize', this.updateDimensions);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  updateDimensions = () => {
+    let windowWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
+    this.setState({ windowWidth });
+  };
 
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
@@ -57,7 +55,7 @@ class HomePage extends Component {
       <div className="homepage">
         {/* Header */}
         <header className="header">
-          <div>To Do</div>
+          {this.state.windowWidth >= 600 ? <div>To Do</div> : ''}
           <div>
             <SearchBox placeholder="Search" handleChange={this.handleChange} />
           </div>
@@ -72,19 +70,36 @@ class HomePage extends Component {
           <div onClick={this.toggle} className="toggler">
             <i className="fa fa-bars" aria-hidden="true"></i>
           </div>
-          <LeftNavigation isOpen={this.state.open} />
-        </div>
-
-        {/* main content */}
-        <div className="main">
-          <div
-            className={`${!this.state.open ? 'main__open' : ''} main__content`}
-          >
-            {this.renderSwitch(
+          <LeftNavigation
+            isOpen={this.state.open}
+            active={
               window.location.href.split('/')[
                 window.location.href.split('/').length - 1
               ]
-            )}
+            }
+          />
+        </div>
+
+        {/* main content */}
+        <div
+          className={`${
+            (this.state.open || this.state.hideNshow) &&
+            this.state.windowWidth <= 360
+              ? 'blurred'
+              : ''
+          } main `}
+        >
+          <div
+            className={`${!this.state.open ? 'main__open' : ''} main__content`}
+          >
+            <TasksWrapper
+              title={
+                window.location.href.split('/')[
+                  window.location.href.split('/').length - 1
+                ]
+              }
+              open={this.state.open}
+            />
           </div>
         </div>
 

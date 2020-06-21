@@ -14,6 +14,8 @@
 
 .profile {
   cursor: pointer;
+  // border: 1px solid black;
+  padding-right: 20px;
 }
 
 .leftNavigation {
@@ -38,6 +40,10 @@
 .open {
   width: 55px;
   min-width: 55px;
+}
+
+.blurred {
+  box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.25);
 }
 
 .main {

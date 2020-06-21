@@ -12,6 +12,8 @@ class TaskSubmitForm extends Component {
 
     this.state = {
       task: '',
+      important: false,
+      completed: false,
     };
   }
 
@@ -20,13 +22,15 @@ class TaskSubmitForm extends Component {
 
     const newTask = {
       task: this.state.task,
-      important: false,
-      completed: false,
+      important: this.state.important,
+      completed: this.state.completed,
     };
 
     this.props.addTask(newTask);
     this.setState({
       task: '',
+      important: false,
+      completed: false,
     });
   };
 

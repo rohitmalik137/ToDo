@@ -39,7 +39,7 @@ class Signup extends React.Component {
 
   onSignup = (e) => {
     e.preventDefault();
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
     //create user object
     const newUser = {
       email,

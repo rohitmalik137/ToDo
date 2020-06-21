@@ -80,12 +80,12 @@ export const login = ({ email, password }: IAuthFunction) => (
 
   axios
     .post('/auth/login', body, config)
-    .then((res) =>
+    .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
-      })
-    )
+      });
+    })
     .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL')

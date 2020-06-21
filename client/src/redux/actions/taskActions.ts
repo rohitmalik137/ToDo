@@ -12,9 +12,11 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 export const getTasks = () => (dispatch: Function, getState: Function) => {
+  // console.log(getState().auth.userId);
+  const id = localStorage.getItem('userId');
   dispatch(setTasksLoading());
   axios
-    .get('/todo/tasks', tokenConfig(getState))
+    .get(`/todo/tasks/${id}`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_TASKS,
@@ -47,8 +49,10 @@ export const addTask = (task: IItem) => (
   dispatch: Function,
   getState: Function
 ) => {
+  // console.log(localStorage.getItem('userId'));
+  const id = localStorage.getItem('userId');
   axios
-    .post('/todo/task', task, tokenConfig(getState))
+    .post(`/todo/task/${id}`, task, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: ADD_TASK,

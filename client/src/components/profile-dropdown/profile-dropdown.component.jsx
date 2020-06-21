@@ -17,13 +17,16 @@ const ProfileDropdown = ({ user, logout }) => (
       <Image logo={profile} profilee="yes" />
     </div>
     <div>{user.email}</div>
+    <hr />
     <div className="links">
       <Link className="link" to="profile">
         My Profile
       </Link>
+      <hr />
       <div onClick={logout} className="link" to="profile">
         Sign out
       </div>
+      <hr />
     </div>
   </div>
 );

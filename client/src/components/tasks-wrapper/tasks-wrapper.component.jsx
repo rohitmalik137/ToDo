@@ -4,11 +4,11 @@ import './tasks-wrapper.styles.scss';
 import TaskSubmitForm from '../task-submit-form/task-submit-form.component';
 import Tasks from '../tasks/tasks.component';
 
-const TasksWrapper = () => (
+const TasksWrapper = ({ title, open }) => (
   <div className="wrapper">
-    <h2 className="heading">Tasks ...</h2>
-    <TaskSubmitForm />
-    <Tasks />
+    <p className="heading">{title} ...</p>
+    {title !== 'assigned_to_me' ? <TaskSubmitForm /> : ''}
+    <Tasks subTitle={title} open={open} />
   </div>
 );
 

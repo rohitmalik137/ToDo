@@ -16,7 +16,11 @@ class LeftNavigation extends Component {
   render() {
     return (
       <div className="main__wrapper">
-        <div className="left-navigation-links__wrapper">
+        <div
+          className={`${
+            this.props.active === 'myday' ? 'active' : ''
+          } left-navigation-links__wrapper `}
+        >
           <Link to="/tasks/myday" style={{ textDecoration: 'none' }}>
             <LeftNavigationLinks
               icon="fa fa-sun-o"
@@ -25,7 +29,11 @@ class LeftNavigation extends Component {
             />
           </Link>
         </div>
-        <div className="left-navigation-links__wrapper">
+        <div
+          className={`${
+            this.props.active === 'important' ? 'active' : ''
+          } left-navigation-links__wrapper `}
+        >
           <Link to="/tasks/important" style={{ textDecoration: 'none' }}>
             <LeftNavigationLinks
               icon="fa fa-star"
@@ -34,7 +42,11 @@ class LeftNavigation extends Component {
             />
           </Link>
         </div>
-        <div className="left-navigation-links__wrapper">
+        <div
+          className={`${
+            this.props.active === 'planned' ? 'active' : ''
+          } left-navigation-links__wrapper `}
+        >
           <Link to="/tasks/planned" style={{ textDecoration: 'none' }}>
             <LeftNavigationLinks
               icon="fa fa-calendar"
@@ -43,7 +55,11 @@ class LeftNavigation extends Component {
             />
           </Link>
         </div>
-        <div className="left-navigation-links__wrapper">
+        <div
+          className={`${
+            this.props.active === 'assigned_to_me' ? 'active' : ''
+          } left-navigation-links__wrapper `}
+        >
           <Link to="/tasks/assigned_to_me" style={{ textDecoration: 'none' }}>
             <LeftNavigationLinks
               icon="fa fa-user"
@@ -52,7 +68,13 @@ class LeftNavigation extends Component {
             />
           </Link>
         </div>
-        <div className="left-navigation-links__wrapper">
+        <div
+          className={`${
+            this.props.active === 'inbox' || this.props.active === 'tasks'
+              ? 'active'
+              : ''
+          } left-navigation-links__wrapper `}
+        >
           <Link to="/tasks/inbox" style={{ textDecoration: 'none' }}>
             <LeftNavigationLinks
               icon="fa fa-home"
