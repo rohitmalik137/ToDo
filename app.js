@@ -29,10 +29,10 @@ mongoose
   .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   }) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
