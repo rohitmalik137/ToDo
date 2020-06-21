@@ -4,6 +4,9 @@ import './homepage.styles.scss';
 import SearchBox from '../../components/search-box/search-box.component';
 import LeftNavigation from '../../components/left-navigation/left-navigation.component';
 import TasksWrapper from '../../components/tasks-wrapper/tasks-wrapper.component';
+import Image from '../../components/image/image.component';
+import profile from '../../assets/profile.png';
+import ProfileDropdown from '../../components/profile-dropdown/profile-dropdown.component';
 
 class HomePage extends Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class HomePage extends Component {
     this.state = {
       searchField: '',
       open: false,
+      hideNshow: false,
     };
   }
 
@@ -36,6 +40,12 @@ class HomePage extends Component {
     this.setState({ searchField: e.target.value });
   };
 
+  hideNshow = () => {
+    this.setState({
+      hideNshow: !this.state.hideNshow,
+    });
+  };
+
   toggle = () => {
     this.setState({
       open: !this.state.open,
@@ -48,8 +58,13 @@ class HomePage extends Component {
         {/* Header */}
         <header className="header">
           <div>To Do</div>
-          <SearchBox placeholder="Search" handleChange={this.handleChange} />
-          <div>My Profile</div>
+          <div>
+            <SearchBox placeholder="Search" handleChange={this.handleChange} />
+          </div>
+          <div className="profile" onClick={this.hideNshow}>
+            <Image logo={profile} miniProfile="yes" profilee="yes" />
+          </div>
+          {this.state.hideNshow ? <ProfileDropdown /> : ''}
         </header>
 
         {/* left navigation */}

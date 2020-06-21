@@ -58,8 +58,7 @@ class Login extends React.Component {
       <div className="sign-in__wrapper">
         <div className="sign-in">
           <div>
-            {' '}
-            <Image logo={logo} isLogo="yes" />{' '}
+            <Image logo={logo} isLogo="yes" />
           </div>
           {this.state.msg ? (
             <div className="error">{this.state.msg}</div>

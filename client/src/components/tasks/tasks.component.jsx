@@ -12,10 +12,24 @@ import {
 import SingleTask from '../single-task/single-task.component';
 
 class Tasks extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      completeToggle: true,
+    };
+  }
+
   componentDidMount() {
     // this.getTasks();
     this.props.getTasks();
   }
+
+  completeToggle = () => {
+    this.setState({
+      completeToggle: !this.state.completeToggle,
+    });
+  };
 
   updateCompletePostHandler = (taskId) => {
     this.props.isComplete(taskId);
@@ -54,29 +68,38 @@ class Tasks extends Component {
             );
           }
         })}
-        <h2>Completed!</h2>
-        {tasks.map((task) => {
-          // console.log(task);
-          if (task.completed) {
-            return (
-              <SingleTask
-                key={task._id}
-                task={task.task}
-                onDelete={this.deletePostHandler.bind(this, task._id)}
-                onUpdateImportant={this.updateImportantPostHandler.bind(
-                  this,
-                  task._id
-                )}
-                onUpdateComplete={this.updateCompletePostHandler.bind(
-                  this,
-                  task._id
-                )}
-                isImportant={task.important}
-                isComplete={task.completed}
-              />
-            );
-          }
-        })}
+        <p onClick={this.completeToggle} className="headings">
+          {this.state.completeToggle ? (
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          ) : (
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          )}
+          Completed!
+        </p>
+        {this.state.completeToggle
+          ? tasks.map((task) => {
+              // console.log(task);
+              if (task.completed) {
+                return (
+                  <SingleTask
+                    key={task._id}
+                    task={task.task}
+                    onDelete={this.deletePostHandler.bind(this, task._id)}
+                    onUpdateImportant={this.updateImportantPostHandler.bind(
+                      this,
+                      task._id
+                    )}
+                    onUpdateComplete={this.updateCompletePostHandler.bind(
+                      this,
+                      task._id
+                    )}
+                    isImportant={task.important}
+                    isComplete={task.completed}
+                  />
+                );
+              }
+            })
+          : ''}
       </div>
     );
   }

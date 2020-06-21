@@ -1,8 +1,22 @@
-.image{
-    height: 450px;
-    width: auto;
+.image {
+  height: 450px;
+  width: auto;
 }
 
-.logo{
-    height: 75px;
+.logo {
+  height: 75px;
+}
+
+.profilee {
+  height: 100px;
+  width: auto;
+  margin: 15px auto;
+  border: 0.5px solid black;
+  border-radius: 50%;
+}
+
+.miniProfile {
+  margin: 15px 5px auto;
+  // margin-top: 25px;
+  height: 30px;
 }

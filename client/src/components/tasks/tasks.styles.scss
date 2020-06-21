@@ -1,0 +1,13 @@
+.headings {
+  text-align: left;
+  font-size: larger;
+  font-weight: 600;
+  color: #000000;
+  cursor: pointer;
+
+  .fa-chevron-right,
+  .fa-chevron-down {
+    padding: 0 10px;
+    font-size: smaller;
+  }
+}

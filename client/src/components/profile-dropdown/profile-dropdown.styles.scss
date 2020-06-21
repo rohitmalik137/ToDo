@@ -1,0 +1,44 @@
+.cart-dropdown {
+  position: absolute;
+  width: 240px;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  // padding: 20px;
+  border: 1px solid rgb(235, 235, 235);
+  background-color: white;
+  color: black;
+  top: 60px;
+  right: 25px;
+  z-index: 5;
+
+  .cart__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: rgb(235, 235, 235);
+    font-size: larger;
+    font-weight: 500;
+
+    .cross {
+      font-size: x-large;
+      cursor: pointer;
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+
+    .link {
+      text-decoration: none;
+      color: rgb(0, 140, 255);
+      cursor: pointer;
+
+      &:active {
+        text-decoration: none;
+      }
+    }
+  }
+}
