@@ -29,13 +29,9 @@ exports.signup = (req, res, next) => {
               config.jwtSecret,
               { expiresIn: '1h' }
             );
-            res.status(201).json({
-              token,
-              user: {
-                id: result._id,
-                email: result.email,
-              },
-            });
+            res
+              .status(201)
+              .json({ token: token, userId: result._id.toString() });
           })
           .catch((err) => {
             if (!err.statusCode) {
